@@ -1,0 +1,2 @@
+import ReservationClientApplication from './ReservationClientApplication'
+export default ReservationClientApplication
