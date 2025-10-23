@@ -7,6 +7,7 @@ import texts_sk from './texts/texts_sk.json'
 import texts_sk_core_ui from '@consuri/core-ui-components/texts/texts_sk.json'
 
 import './style/index.scss'
+import SecuredPageWrapper from "../../../libs/core-auth/src/pages/SecuredPageWrapper";
 
 const i18n = initializeI18n({sk: [texts_sk_core_ui, texts_sk]})
 
@@ -14,13 +15,16 @@ const ReservationClientApplication = () => {
     const navigate = useNavigate()
 
     return (
-        <PageLayout>
-            <Routes>
-                <Route index Component={() => <HomePage/>}/>
-                <Route path='/error' element={<ErrorPage/>}/>
-                <Route path='*' element={<NotFoundPage/>}/>
-            </Routes>
-        </PageLayout>
+        <SecuredPageWrapper>
+            <PageLayout>
+                <Routes>
+                    <Route index Component={() => <HomePage/>}/>
+                    <Route path='/error' element={<ErrorPage/>}/>
+                    <Route path='/login' element={<ErrorPage/>}/>
+                    <Route path='*' element={<NotFoundPage/>}/>
+                </Routes>
+            </PageLayout>
+        </SecuredPageWrapper>
     )
 }
 

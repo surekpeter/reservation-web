@@ -33,6 +33,7 @@
       "@consuri/core-ui-components/style/index.scss": ["libs/core-ui-components/src/style/index.scss"],
       "@consuri/core-ui-components/texts/texts_sk.json": ["libs/core-ui-components/src/texts/texts_sk.json"],
       "@consuri/core-ui-components": ["libs/core-ui-components/src/index.ts"],
+      "@consuri/core-auth": ["libs/core-auth/src/index.ts"],
       "@consuri/reservation-client": ["apps/reservation-client/src/index.ts"],
     }
   },
