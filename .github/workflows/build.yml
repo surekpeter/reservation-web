@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npm run build
+        run: npm run build-reservation-client:test_cdn
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1

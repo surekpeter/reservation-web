@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --noEmit && npx nx run-many -t build --exclude dev-*",
-    "build-reservation-client:dev": "tsc --noEmit && npx nx run reservation-app:build --base=https://assets.development.meliovit.com",
+    "build-reservation-client:test_cdn": "tsc --noEmit && npx nx run reservation-app:build --base=https://reservation-system-test.pages.dev",
     "devClient": "nx run dev-reservation-app:dev --port=3001",
     "lint": "eslint **/*.{ts,tsx}",
     "prettier:fix": "npx prettier --write \"**/*.{ts,tsx}\"",
