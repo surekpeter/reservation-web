@@ -35,5 +35,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: reservation-system-test
-          directory: build
+          directory: app_runners/prod/reservation-app
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
