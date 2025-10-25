@@ -86,8 +86,8 @@ const useRequestOnDemand = <Req = void, Res = void>(
       } else {
         response = await apiFetcher.get<Res>(urlToInvoke, standardRequestHeaders)
       }
-      setRequestState({ isLoading: false, hasError: undefined, responseData: response })
-      return response
+      setRequestState({ isLoading: false, hasError: undefined, responseData: response.responseData })
+      return response.responseData
     } catch (err: any) {
       setRequestState({
         isLoading: false,

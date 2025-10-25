@@ -55,7 +55,7 @@ export default <T>(getIdentifier: (item: T) => string | number) => {
             const newData = { ...prev.data }
             const newStatus = { ...prev.status }
 
-            result.forEach((each) => {
+            result.responseData.forEach((each) => {
               const identifier = getIdentifier(each)
               newStatus[identifier] = 'success'
               newData[identifier] = each

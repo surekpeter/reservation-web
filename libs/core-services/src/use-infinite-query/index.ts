@@ -26,7 +26,7 @@ const useInfiniteApiQuery = <T>(queryKey: string | string[], url: string, pageSi
             page: pageParam || 0,
             size: pageSize
         })
-        return response;
+        return response.responseData;
     }, [url, pageSize, urlParams]);
     const qk = Array.isArray(queryKey) ? queryKey : [queryKey];
     const response = useInfiniteQuery<Paginated<T>>([qk], queryFunction, {
