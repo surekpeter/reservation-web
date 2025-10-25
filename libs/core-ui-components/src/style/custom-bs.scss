@@ -1,0 +1,213 @@
+// Bootstrap
+// Global Custom Bootstrap Variables
+@import 'bootstrap/scss/mixins/breakpoints';
+
+// typography
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-monospace: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-family-base: $font-family-sans-serif;
+$font-family-code: $font-family-monospace;
+
+$font-weight-base: 400; // imported weight from googleapis
+$font-weight-medium: 500; // imported weight from googleapis
+$font-weight-bold: 700; // imported weight from googleapis
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+// spaces
+$enable-negative-margins: true;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 2,
+  6: $spacer * 3,
+);
+
+// btn
+$btn-font-weight: bold;
+$btn-padding-y: 1rem;
+$btn-padding-x: 1rem;
+$btn-font-size: 0.875rem;
+
+// colors
+$primary: #15d1d1 !default;
+$primary-light: #dcf8f8 !default;
+$secondary-semitransparent: #1c436b !default;
+$secondary: #042f5b !default;
+$secondary-light: #1a476f !default;
+$secondary-lighter: #44698a !default;
+$bluish-gray: #e8eff6 !default;
+$success-dark: #2b6d55 !default;
+$success: #00a674 !default;
+$success-light: #9af4d4 !default;
+$info: #14787e !default;
+$info-light: #b0f2f2 !default;
+$warning: #f1cdb9 !default;
+$danger: #d11542 !default;
+$danger-light: #f9b0b9 !default;
+$light-gray: #eff3f6 !default;
+$gray: #ebebeb !default;
+$middle-gray: #808080 !default;
+$footer-gray: #7785ac !default;
+$dark-gray: #686868 !default;
+$dark: #212529 !default;
+$white: #fff !default;
+$muted: #d4d4d4 !default;
+$orange: #f7bf9f !default;
+$orange-dark: #d15915 !default;
+$green-light: #bcf8ec !default;
+$purple: #e9ccf7 !default;
+$purple-dark: #a053c6 !default;
+
+$text-color: $white !default;
+
+$theme-colors: (
+  'light': $light-gray,
+  'light-gray': $light-gray,
+  'bluish-gray': $bluish-gray,
+  'gray': $gray,
+  'middle-gray': $middle-gray,
+  'footer-gray': $footer-gray,
+  'dark-gray': $dark-gray,
+  'dark': $dark,
+  'info': $info,
+  'info-light': $info-light,
+  'warning': $warning,
+  'muted': $muted,
+  'white': $white,
+  'orange': $orange,
+  'orange-dark': $orange-dark,
+  'purple': $purple,
+  'purple-dark': $purple-dark,
+  'danger': $danger,
+  'danger-light': $danger-light,
+  'success': $success,
+  'success-light': $success-light,
+  'success-dark': $success-dark,
+  'secondary': $secondary,
+  'secondary-light': $secondary-light,
+  'secondary-lighter': $secondary-lighter,
+  'primary-light': $primary-light,
+  'primary': $primary,
+  'secondary-semitransparent': $secondary-semitransparent,
+  'green-light': $green-light,
+);
+
+@if global-variable-exists(custom-colors) {
+  $theme-colors: map-merge($theme-colors, $custom-colors);
+}
+
+// table
+$table-striped-bg: $white !default;
+
+.spinner-wrapper {
+  min-height: 300px;
+}
+
+// Custom Bootstrap Classes Styles
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+.white-space-normal {
+  white-space: normal;
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.break-word-all {
+  word-break: break-all;
+}
+
+.break-word-keep {
+  word-break: keep-all;
+}
+
+.break-word-word {
+  word-break: break-word;
+}
+
+.transform-rotate {
+  transform: rotate(180deg);
+}
+
+// font
+.fs-sm {
+  font-size: 0.75rem; // 12px
+}
+
+.fs-md {
+  font-size: 0.875rem; // 14px
+}
+
+.fs-base {
+  font-size: 1rem !important; // 16px
+}
+
+.fs-lg {
+  font-size: 1.125rem; // 18px
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+// flex
+.flex-basis-25 {
+  flex-basis: 25%;
+}
+
+.flex-basis-50 {
+  flex-basis: 50%;
+}
+
+// width
+.w-max-content {
+  width: max-content;
+}
+
+.w-min-8ch {
+  width: 8ch;
+}
+
+.w-1-5rem {
+  width: 1.5rem;
+}
+
+.min-width-7 {
+  min-width: 7rem;
+}
+
+.w-max-content {
+  width: max-content;
+}
+
+.w-md-50 {
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+}
+
+// height
+.placeholder-height-10rem {
+  min-height: 10rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

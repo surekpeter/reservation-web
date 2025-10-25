@@ -1,0 +1,18 @@
+{
+  "extends": "../../../tsconfig.dev.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "../../.././**/*.ts",
+    "../../.././**/*.tsx",
+    "../../.././**/*.js",
+    "../../.././**/*.jsx",
+    "../../.././**/*/.next/types/**/*.ts",
+    ".next/types/**/*.ts"
+  ]
+}

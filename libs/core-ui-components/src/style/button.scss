@@ -1,0 +1,48 @@
+// Button variants
+.btn-outline-primary {
+  --bs-btn-hover-color: #fff;
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-active-color: #fff;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-disabled-color: #dcf8f8;
+  border: unset;
+}
+
+.btn-secondary {
+  --bs-btn-color: #15d1d1;
+  --bs-btn-disabled-color: #15d1d1;
+  --bs-btn-active-color: #15d1d1;
+  --bs-btn-hover-color: #15d1d1;
+  --bs-btn-bg: #dcf8f8;
+  --bs-btn-active-bg: #dcf8f8;
+  --bs-btn-hover-bg: #d0f6f6;
+  --bs-btn-disabled-bg: #dcf8f8;
+  border: unset;
+}
+
+.btn-sm {
+  --bs-btn-padding-y: 0.75rem;
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-border-radius: 0.5rem;
+}
+
+// DropdownButton
+.dropdown {
+  .btn {
+    --bs-btn-font-size: 1rem;
+
+    &:after {
+      font-size: 1.15rem;
+      vertical-align: 0.15rem;
+    }
+  }
+
+  // scrollable items
+  .dropdown-menu {
+    max-height: 25rem;
+    overflow-y: scroll;
+  }
+}

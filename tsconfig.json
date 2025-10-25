@@ -1,0 +1,53 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "types": [
+      "jest",
+      "node"
+    ],
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "Bundler",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@consuri/core-services": ["libs/core-services/src/index.ts"],
+      "@consuri/core-ui-components/style/index.scss": ["libs/core-ui-components/src/style/index.scss"],
+      "@consuri/core-ui-components/texts/texts_sk.json": ["libs/core-ui-components/src/texts/texts_sk.json"],
+      "@consuri/core-ui-components": ["libs/core-ui-components/src/index.ts"],
+      "@consuri/core-auth": ["libs/core-auth/src/index.ts"],
+      "@consuri/reservation-client": ["apps/reservation-client/src/index.ts"],
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "./env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "jest.config.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}

@@ -1,0 +1,101 @@
+$form-checkbox-size: 1.25rem;
+
+// CheckboxInput
+.form-check {
+  margin-bottom: 0.5rem !important;
+  line-height: $form-checkbox-size;
+
+  &-input {
+    height: $form-checkbox-size;
+    width: $form-checkbox-size;
+    margin-inline-end: 0.5rem;
+    margin-top: 0;
+  }
+}
+
+// TextInput
+.form-control-group {
+  .form-label {
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .form-control,
+  .form-control-fake {
+    padding: 1rem;
+  }
+
+  &.noninteractive .form-control {
+    &:focus {
+      box-shadow: unset;
+    }
+    border: unset;
+    background-color: $gray;
+    color: $middle-gray;
+  }
+
+  .form-control-fake {
+    background-color: $gray;
+    color: $middle-gray;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+  }
+
+  .form-control:disabled,
+  .form-control[readonly]:not(.date-picker-container .form-control) {
+    background-color: $gray;
+    color: $middle-gray;
+  }
+
+  // space for accommodating the error exclamation icon
+  .form-control.is-invalid {
+    padding-right: 2rem;
+  }
+}
+
+// StandaloneSearchTextInput
+.form-control-group.search-input-container {
+  display: flex;
+  position: relative;
+
+  svg.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 1.15rem;
+    color: $middle-gray;
+  }
+
+  input[type='search'] {
+    padding-left: 3rem;
+  }
+
+  input[type='search']:focus ~ svg.search-icon {
+    color: $primary;
+  }
+}
+
+// DateField
+.form-control-group.date-picker-container .react-datepicker__input-container {
+  display: flex;
+  position: relative;
+
+  svg.calendar-icon {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: $middle-gray;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  input[type='text'] {
+    padding-left: 3rem;
+  }
+
+  input[type='text']:focus ~ svg.calendar-icon {
+    color: $primary;
+  }
+}
