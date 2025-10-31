@@ -10,12 +10,13 @@ export type {
   GlobalScopedHeader,
 }
 
-export * as AppEnv from './app-env/AppEnv'
+export * from './app-env/AppEnv'
 export * from './current-user-context'
 export * from './current-user-context'
 export * from './dto'
 export * from './enums/user-role'
 export * from './i18n'
+export * from './use-get'
 export * from './use-api-fetcher'
 export * from './use-get-batch'
 export * from './use-request-on_demande'

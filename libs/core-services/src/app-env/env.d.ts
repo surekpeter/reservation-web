@@ -1,6 +1,6 @@
 interface ImportMetaEnv {
   readonly MODE: 'development' | 'production'
-  readonly VITE_GOOGLE_CLIENT_ID?: string
+  readonly VITE_KEYCLOAK_URL?: string
 }
 
 interface ImportMeta {

@@ -1,5 +1,4 @@
-import {RequestScopedHeader, StandardHeaders} from "@consuri/core-services";
-import useGet from "../../../core-services/src/use-get";
+import {useGet, RequestScopedHeader, StandardHeaders} from "@consuri/core-services";
 
 export interface User {
     id: string;

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { PageLayout } from '@consuri/core-ui-components'
+import React from 'react'
+import {PageLayout} from '@consuri/core-ui-components'
+import {useUserReservation} from '../hooks'
 
 export const HomePage = () => {
-  return (
-    <PageLayout >
-      <div>HOME PAGE</div>
-    </PageLayout>
-  )
+    const userReservationResponse = useUserReservation()
+    return (
+        <PageLayout>
+            <div>HOME PAGE</div>
+        </PageLayout>
+    )
 }
