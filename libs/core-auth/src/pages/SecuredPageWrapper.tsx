@@ -7,7 +7,7 @@ import {useAuth} from "../hooks";
 
 const keycloak = new Keycloak({
     url: AppEnv.KEYCLOAK_URL!!,
-    realm: 'reservation_system_realm',
+    realm: 'reservation_system',
     clientId: 'reservation-web'
 });
 
