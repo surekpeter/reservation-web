@@ -1,5 +1,6 @@
 import axios, {AxiosRequestConfig} from 'axios'
 import {v4 as uuidv4} from 'uuid'
+import { User } from "oidc-client-ts"
 
 type PartialRecord<K extends keyof any, T> = {
     [P in K]?: T
@@ -13,11 +14,24 @@ type StandardHeaders<T extends RequestScopedHeader | GlobalScopedHeader> = Parti
 
 let _apiUrl = ''
 
+
+const getToken = (): string | null => {
+    console.log('read token from storage')
+    const oidcStorage = localStorage.getItem(`oidc.user:<your authority>:<your client id>`)
+    if(oidcStorage){
+        // @ts-ignore
+        (oidcStorage as User).access_token
+    }
+    return null
+
+}
 const get = async <T>(
     url: string,
     standardRequestHeaders?: StandardHeaders<RequestScopedHeader>,
     urlParams?: Record<string, string | number>
 ) => {
+
+
     const headers = await getRequestConfig(standardRequestHeaders)
     const response = await axios.get<T>(`${_apiUrl}${url}`, {...headers, params: urlParams})
     const responseData: T = response.data
@@ -59,6 +73,7 @@ const getRequestConfig = async (
     standardRequestHeaders?: StandardHeaders<RequestScopedHeader>,
 ): Promise<AxiosRequestConfig> => {
     const headers: StandardHeaders<RequestScopedHeader> = {
+        Authorization: `Bearer ${getToken()}`,
         RequestId: uuidv4(),
         TimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     }
