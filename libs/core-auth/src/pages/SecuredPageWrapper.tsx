@@ -1,57 +1,49 @@
-import React, { useEffect } from "react";
-import {AppEnv} from "@consuri/core-services";
+import React from "react";
 import {ErrorAlert, Spinner} from "@consuri/core-ui-components";
 import {useAuth} from "../hooks";
-import { AuthProvider } from "react-oidc-context";
-import { useAuth as useAuthOidc, useAutoSignin } from "react-oidc-context";
+import {ReactKeycloakProvider, useKeycloak} from "@react-keycloak/web";
+import Keycloak from "keycloak-js";
+import {AppEnv} from "@consuri/core-services";
 
-const oidcConfig = {
-    authority: `${AppEnv.KEYCLOAK_URL}/realms/reservation_system`,
-    client_id: 'reservaation-web',
-    redirect_uri: 'http://localhost:3001', //window.location.origin,
-    response_type: "code",
-    scope: "openid profile email",
-};
-
+const keycloak = new Keycloak({
+    url: AppEnv.KEYCLOAK_URL!!,
+    realm: 'reservation_system',
+    clientId: 'reservation-web'
+});
 
 const SecuredPageContent = ({logout, children}: { logout: () => void, children: React.ReactNode }) => {
-
 
     const authRequest = useAuth();
 
     if (authRequest.isLoading) return <Spinner/>;
     if (authRequest.status === 401) return <ErrorAlert errorText={'Can not resolve current user data'}/>;
     return <>
+        <h2>Hello</h2>
         <button onClick={logout}>Logout</button>
         {children}
     </>
 }
 
 const AuthLoginPageContent = ({children}: { children: React.ReactNode }) => {
-    // If you provide no signinMethod at all, the default is signinRedirect
-    const { isLoading, isAuthenticated, error } = useAutoSignin({signinMethod: "signinRedirect"});
-    const auth = useAuthOidc();
 
+    const {keycloak, initialized} = useKeycloak()
 
-    if (auth.isLoading) {
-        return <Spinner/>
-    }
+    const login = () => keycloak.login();
+    const loginWithGoogle = () => keycloak.login({idpHint: 'google'});
+    const logout = () => keycloak.logout({redirectUri: window.location.origin});
+    const register = () => keycloak.register();
+    const forgotPassword = () => keycloak.accountManagement();
 
-    if (auth.error) {
-        return <div>Oops... {auth.error.message}</div>;
-    }
-
-    const logout = () => auth.removeUser();
-    // const register = () => keycloak.register();
-    // const forgotPassword = () => keycloak.accountManagement();
+    if (!initialized) return <Spinner/>;
 
     return <div style={{padding: 20}}>
-        {!auth.isAuthenticated ? (
+        {!keycloak.authenticated ? (
             <>
                 <h2>Welcome, please sign in</h2>
-                <button onClick={() => void auth.signinRedirect()}>Login</button>
-                {/*<button onClick={register}>Register</button>*/}
-                {/*<button onClick={forgotPassword}>Forgot password?</button>*/}
+                <button onClick={login}>Login</button>
+                <button onClick={loginWithGoogle}>Google</button>
+                <button onClick={register}>Register</button>
+                <button onClick={forgotPassword}>Forgot password?</button>
             </>
         ) : (
             <SecuredPageContent logout={logout}>
@@ -62,11 +54,14 @@ const AuthLoginPageContent = ({children}: { children: React.ReactNode }) => {
 }
 
 const SecuredPageWrapper = ({children}: { children: React.ReactNode }) => {
-    return <AuthProvider {...oidcConfig}>
+    return <ReactKeycloakProvider
+        authClient={keycloak}
+        initOptions={{onLoad: 'check-sso', pkceMethod: 'S256'}}
+    >
         <AuthLoginPageContent>
             {children}
         </AuthLoginPageContent>
-    </AuthProvider>
+    </ReactKeycloakProvider>
 }
 
 export default SecuredPageWrapper

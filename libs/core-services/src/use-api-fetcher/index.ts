@@ -1,12 +1,18 @@
 import apiFetcher, {RequestScopedHeader, StandardHeaders} from '../api-fetcher'
+import {useKeycloak} from "@react-keycloak/web";
 
 const useApiFetcher = () => {
+
+    const {keycloak} = useKeycloak()
+
+
 
     const get = async <T>(
         url: string,
         standardRequestHeaders?: StandardHeaders<RequestScopedHeader>,
     ) => {
-        const headers: StandardHeaders<RequestScopedHeader> = {...standardRequestHeaders}
+        console.log('token', keycloak.token)
+        const headers: StandardHeaders<RequestScopedHeader> = {Authorization: `Bearer ${keycloak.token}`, ...standardRequestHeaders}
         return apiFetcher.get<T>(url, headers)
     }
 
