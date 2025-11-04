@@ -11,7 +11,7 @@ export const useAuth = (
     throwExceptionIntoRender = false,
 ) => {
     return useGet<User | null>(
-        `/auth/verify`,
+        `/api/auth/verify`,
         {
             email: "", name: "",
             id: ''
